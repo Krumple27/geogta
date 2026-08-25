@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeoGTA — Tippelj a térképen!</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">🗺️ <span>GeoGTA</span></div>
+    <div id="timer" class="timer">--:--</div>
+  </header>
+
+  <main class="layout">
+
+    <aside class="sidebar">
+      <div id="loadingState" class="panel">
+        <p>⏳ Kör betöltése…</p>
+      </div>
+
+      <div id="errorState" class="panel error-panel hidden">
+        <h2>❌ Hiba</h2>
+        <p id="errorMessage">Ismeretlen hiba történt.</p>
+      </div>
+
+      <div id="gameState" class="panel hidden">
+        <h2>Hol van ez a helyszín?</h2>
+        <img id="locationImage" class="location-image" src="" alt="Helyszín kép">
+        <p class="hint">Kattints a térképre a jelölő lerakásához. Bárhányszor áthelyezheted, mielőtt beküldöd.</p>
+
+        <div id="pinInfo" class="pin-info hidden">
+          📍 Jelölő lerakva — kattints máshova az áthelyezéshez.
+        </div>
+
+        <button id="submitBtn" class="submit-btn" disabled>Tipp Elküldése</button>
+      </div>
+
+      <div id="resultState" class="panel hidden">
+        <h2 id="resultTitle">🎯 Eredmény</h2>
+        <div class="result-grid">
+          <div class="result-item">
+            <span class="result-label">Valódi helyszín</span>
+            <span id="resultLocation" class="result-value">—</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Távolság</span>
+            <span id="resultDistance" class="result-value">—</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Pontszám</span>
+            <span id="resultScore" class="result-value">—</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Jutalom</span>
+            <span id="resultReward" class="result-value">—</span>
+          </div>
+        </div>
+        <p class="result-footer">Az eredmény a Discord üzenetben is frissült. Nyugodtan bezárhatod ezt az ablakot!</p>
+      </div>
+    </aside>
+
+    <section class="map-wrap">
+      <div id="map"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

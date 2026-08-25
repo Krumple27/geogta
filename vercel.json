@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/geogta", "destination": "/geogta/index.html" }
+  ]
+}
