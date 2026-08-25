@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
         .select('token, status, location_name, image_url, expires_at')
         .eq('token', token)
         .maybeSingle();
-
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
     if (error) return res.status(500).json({ error: 'Adatbázis hiba.' });
     if (!session) return res.status(404).json({ error: 'Nem található ilyen kör (lejárt a link, vagy hibás a token).' });
 
