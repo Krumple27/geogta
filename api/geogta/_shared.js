@@ -3,7 +3,11 @@
 // Client-et használjuk (annak élő gateway-kapcsolat kellene, ami Vercel-en nem
 // lehetséges), hanem a Discord REST API-t hívjuk közvetlenül fetch-csel — ehhez
 // csak a bot tokenre van szükség, élő kapcsolatra nem.
+console.log('[DEBUG] SUPABASE_URL raw:', JSON.stringify(process.env.SUPABASE_URL));
+console.log('[DEBUG] SUPABASE_URL length:', (process.env.SUPABASE_URL || '').length);
+console.log('[DEBUG] SUPABASE_SERVICE_KEY present:', !!process.env.SUPABASE_SERVICE_KEY);
 
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
 const { createClient } = require('@supabase/supabase-js');
 const { EmbedBuilder } = require('discord.js'); // tiszta "builder", nem igényel gateway-kapcsolatot
 
